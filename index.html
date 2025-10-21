@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Devlopping - Développement WinDev, WebDev & Mobile</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    :root {
+      --bleu-clair: #80bfff;
+      --mauve: #b18cd9;
+      --bleu-fonce: #3a4fcf;
+      --text-dark: #333;
+      --bg-light: linear-gradient(180deg, #e6f0ff, #f3e6ff);
+      --bg-header: linear-gradient(135deg, var(--bleu-clair), var(--mauve));
+      --white: #fff;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --text-dark: #f5f5f5;
+        --bg-light: linear-gradient(180deg, #1c1c28, #2a2942);
+        --bg-header: linear-gradient(135deg, #3a4fcf, #6d42c2);
+        --white: #222;
+      }
+      body { color: var(--text-dark); }
+      .service { background: #2a2942; }
+      footer { background: #1c1c28; }
+      .cta-btn { background: var(--mauve); color: white; }
+      .cta-btn:hover { background: var(--bleu-fonce); }
+    }
+    body {
+      margin: 0;
+      font-family: "Poppins", sans-serif;
+      background: var(--bg-light);
+      color: var(--text-dark);
+      scroll-behavior: smooth;
+    }
+    header {
+      background: var(--bg-header);
+      background-size: 200% 200%;
+      animation: gradientMove 8s ease infinite;
+      color: white;
+      text-align: center;
+      padding: 100px 20px 80px 20px;
+      position: relative;
+      overflow: hidden;
+    }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    header::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background-image: url("https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      opacity: 0.25;
+      z-index: 0;
+    }
+    .logo {
+      font-size: 2em; font-weight: 700; color: white;
+      letter-spacing: 2px;
+      background: linear-gradient(90deg, #fff, #dfe9ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 3px 10px rgba(0,0,0,0.3);
+      position: relative; z-index: 1; margin-bottom: 20px;
+    }
+    header p, header a { position: relative; z-index: 1; }
+    header p { font-size: 1.3em; margin-top: 15px; color: #f5f5f5; }
+    .cta-btn {
+      display: inline-block;
+      background: #ffffff; color: var(--bleu-fonce);
+      padding: 15px 35px; border-radius: 30px; text-decoration: none;
+      font-weight: 600; margin-top: 30px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .cta-btn:hover { transform: scale(1.05); background: var(--mauve); color: #fff; }
+    section { max-width: 1100px; margin: auto; padding: 80px 20px; text-align: center; }
+    h2 { color: var(--bleu-fonce); font-size: 2.2em; margin-bottom: 20px; }
+    section p { font-size: 1.1em; line-height: 1.7em; }
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+    .service {
+      background: white; border-radius: 15px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); padding: 25px;
+    }
+    .service img { width: 100%; border-radius: 10px; height: 180px; object-fit: cover; }
+    .service h3 { color: var(--bleu-fonce); margin: 15px 0 10px 0; }
+    form {
+      max-width: 600px; margin: 40px auto 0;
+      display: flex; flex-direction: column; gap: 15px; text-align: left;
+    }
+    input, textarea {
+      padding: 12px; border-radius: 8px; border: 1px solid #ccc;
+      font-size: 1em; width: 100%; font-family: "Poppins", sans-serif;
+    }
+    textarea { resize: vertical; height: 120px; }
+    button[type="submit"] {
+      align-self: center;
+      background: var(--bleu-fonce); color: white; border: none;
+      padding: 12px 35px; border-radius: 25px;
+      font-size: 1em; cursor: pointer; transition: 0.3s;
+    }
+    button[type="submit"]:hover { background: var(--mauve); }
+    .form-message {
+      text-align: center;
+      font-weight: 600;
+      color: var(--bleu-fonce);
+      margin-top: 15px;
+      display: none;
+    }
+    footer {
+      background: var(--bleu-fonce); color: white;
+      padding: 40px 20px; text-align: center;
+    }
+    .social-icons {
+      margin-top: 20px;
+      display: flex; justify-content: center; gap: 25px;
+    }
+    .social-icons a {
+      color: white; font-size: 1.6em;
+      transition: transform 0.3s, color 0.3s;
+    }
+    .social-icons a:hover { transform: scale(1.2); color: var(--bleu-clair); }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="logo">Devlopping</div>
+    <p>Le développement sur mesure, rapide et performant<br>en WinDev, WebDev & WinDev Mobile</p>
+    <a href="#contact" class="cta-btn">Discutons de votre projet</a>
+  </header>
+
+  <section id="about">
+    <h2>Notre expertise</h2>
+    <p>Chez <strong>Devlopping</strong>, nous transformons vos idées en solutions logicielles fiables, ergonomiques et performantes.</p>
+    <img src="https://images.unsplash.com/photo-1551033406-611cf9a28f67?auto=format&fit=crop&w=1000&q=80"
+         alt="Développement logiciel"
+         style="width:100%;height:300px;object-fit:cover;border-radius:15px;margin-top:40px;">
+  </section>
+
+  <section id="services">
+    <h2>Nos services</h2>
+    <div class="services">
+      <div class="service">
+        <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=900&q=80" alt="Application WinDev">
+        <h3>Applications WinDev</h3>
+        <p>Applications métiers puissantes, stables et connectées à vos bases SQL Server ou HFSQL.</p>
+      </div>
+      <div class="service">
+        <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=80" alt="Application WebDev">
+        <h3>Solutions WebDev</h3>
+        <p>Sites et portails d’entreprise modernes, responsives et performants.</p>
+      </div>
+      <div class="service">
+        <img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?auto=format&fit=crop&w=900&q=80" alt="Application WinDev Mobile">
+        <h3>Applications WinDev Mobile</h3>
+        <p>Applications Android et iOS connectées à vos systèmes internes.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <h2>Contactez-nous</h2>
+    <p>Vous avez un projet ? Remplissez le formulaire ci-dessous 👇</p>
+
+    <form action="https://formspree.io/f/xabc1234" method="POST" id="contact-form">
+      <input type="text" name="nom" placeholder="Votre nom" required>
+      <input type="email" name="email" placeholder="Votre email" required>
+      <textarea name="message" placeholder="Votre message" required></textarea>
+      <button type="submit">Envoyer</button>
+      <p class="form-message" id="form-message">Merci ! Votre message a bien été envoyé 😊</p>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 Devlopping — Développement WinDev, WebDev & Mobile</p>
+    <p><a href="mailto:contact@devlopping.fr">contact@devlopping.fr</a></p>
+    <div class="social-icons">
+      <a href="https://linkedin.com" target="_blank"><i class="fab fa-linkedin"></i></a>
+      <a href="https://facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+      <a href="https://instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+    </div>
+  </footer>
+
+  <script>
+    const form = document.getElementById('contact-form');
+    const message = document.getElementById('form-message');
+    form.addEventListener('submit', function() {
+      setTimeout(() => {
+        message.style.display = 'block';
+        form.reset();
+      }, 1000);
+    });
+  </script>
+</body>
+</html>
