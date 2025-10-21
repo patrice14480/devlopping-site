@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Boutique Devlopping</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body { margin:0; font-family:Poppins, sans-serif; background:#fdfdfd; color:#333; }
+    header { text-align:center; padding:20px; background:linear-gradient(90deg,#7fa6ff,#b18cd9); color:white; }
+    header a { color:white; text-decoration:none; font-weight:600; }
+    section { padding:40px 20px; max-width:1100px; margin:auto; text-align:center; }
+    .product { display:inline-block; background:white; border-radius:12px; box-shadow:0 6px 18px rgba(0,0,0,0.08); padding:20px; margin-top:20px; max-width:400px; }
+    .product img { width:100%; border-radius:10px; }
+    .cart { margin-top:30px; background:#f3f3f3; border-radius:10px; padding:20px; display:inline-block; text-align:left; max-width:400px; }
+    button { background:#7fa6ff; color:white; border:none; border-radius:8px; padding:10px 18px; cursor:pointer; font-weight:600; }
+    button:hover { background:#3a4fcf; }
+    @media (prefers-color-scheme: dark) {
+      body { background:#121212; color:#eee; }
+      header { background:linear-gradient(90deg,#3a4fcf,#6d47a8); }
+      .product { background:#1e1e1e; color:#ddd; }
+      .cart { background:#1a1a1a; color:#ccc; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <a href="index.html">← Retour au site Devlopping</a>
+    <h1>Boutique Devlopping</h1>
+  </header>
+
+  <section>
+    <div class="product">
+      <img src="https://images.unsplash.com/photo-1520975911910-681b5f2620b9?auto=format&fit=crop&w=900&q=80" alt="Tee-shirt Devlopping">
+      <h2>Tee-shirt Devlopping</h2>
+      <p>Cotton premium • Coupe confort • Impression logo Devlopping</p>
+      <p><strong>25,00 €</strong></p>
+
+      <label for="size">Taille :</label>
+      <select id="size">
+        <option value="S">S</option>
+        <option value="M" selected>M</option>
+        <option value="L">L</option>
+        <option value="XL">XL</option>
+      </select><br><br>
+
+      <button id="buy-email" style="background:#b18cd9;">Acheter par e-mail</button>
+    </div>
+  </section>
+
+  <script>
+    document.getElementById('buy-email').addEventListener('click', ()=>{
+      const size = document.getElementById('size').value;
+      const subject = encodeURIComponent(`Commande Tee-shirt Devlopping (${size})`);
+      const body = encodeURIComponent(`Bonjour,\n\nJe souhaite commander 1 Tee-shirt Devlopping.\n\nTaille: ${size}\nPrix: 25,00 €\n\nNom: \nEmail: \nAdresse de livraison: \n\nMerci.`);
+      window.location.href = `mailto:contact@devlopping.fr?subject=${subject}&body=${body}`;
+    });
+  </script>
+</body>
+</html>
